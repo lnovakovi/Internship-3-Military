@@ -12,16 +12,27 @@ namespace Military
 
         protected Vehicle(int id,double weight,double averageSpeed, int fuelConsumption,int capacity)
         {
+            ID = id;
+            Weigth = weight;
+            AverageSpeed = averageSpeed;
+            FuelConsumption = fuelConsumption;
+            Capacity = capacity;
+        }
+        public virtual void Print()
+        {
+            Console.WriteLine($"ID: {ID} | Weight: {Weigth} | Average Speed {AverageSpeed} | Fuel Consumption {FuelConsumption}" +
+                              $"| Capacity { Capacity}");
+        }
+        public virtual void NewTrip(int soldiers, int groundOrWaterDistance)
+        {
             
         }
-
-       
-        protected virtual int NewTrip(int soldiers, int groundDistance, int waterDistance = 0)
+        public virtual void NewTrip(int soldiers, int groundDistance, int waterDistance)
         {
-            return 0; //just to return int
+
         }
 
-        public int CalculateFuelForTheTrip(int totalDistance)
+        protected int CalculateFuelForTheTrip(int totalDistance)
         {
             return totalDistance / 100 * FuelConsumption;
         }
@@ -29,12 +40,17 @@ namespace Military
         protected int CalculateHowManyTrips(int soldiers)
         {
             var howManyTrips = 0;
-            if (soldiers / Capacity != 0)
+            if (soldiers % Capacity != 0)
+            {
                 howManyTrips = soldiers / Capacity + 1;
+                
+            }
+               
             else
             {
                 howManyTrips = soldiers / Capacity;
             }
+            
             return howManyTrips;
         }
 
