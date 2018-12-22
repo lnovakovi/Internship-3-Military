@@ -18,7 +18,7 @@ namespace Military
             FuelConsumption = fuelConsumption;
             Capacity = capacity;
         }
-        public virtual void Print()
+        protected virtual void Print()
         {
             Console.WriteLine($"ID: {ID} | Weight: {Weigth} | Average Speed {AverageSpeed} | Fuel Consumption {FuelConsumption}" +
                               $"| Capacity { Capacity}");
@@ -32,20 +32,21 @@ namespace Military
 
         }
 
-        protected int CalculateFuelForTheTrip(int totalDistance)
+        protected double CalculateFuelForTheTrip(int totalDistance)
         {
-            return totalDistance / 100 * FuelConsumption;
+          
+            double x = (double)totalDistance / 100 * FuelConsumption;             
+            return x;
         }
 
         protected int CalculateHowManyTrips(int soldiers)
         {
-            var howManyTrips = 0;
+            var howManyTrips=0;
             if (soldiers % Capacity != 0)
             {
                 howManyTrips = soldiers / Capacity + 1;
                 
-            }
-               
+            }              
             else
             {
                 howManyTrips = soldiers / Capacity;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Military
 {
@@ -22,6 +20,19 @@ namespace Military
             } while (!enterInput);
 
             return output;
+        }
+
+        public static bool CheckIfInputIsOk(int gDistance, int wDistance, int tankDistance, int warshipDistance)
+        {
+            if (gDistance + wDistance < tankDistance &&
+                gDistance + wDistance < warshipDistance)
+            {
+                return true;
+            }
+            else
+            {             
+                    return false;                
+            }
         }
 
         

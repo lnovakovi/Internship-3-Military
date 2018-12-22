@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace Military
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var tank = new Tank(1,5000,60);
             var warship = new Warship(2,20000,40);
@@ -16,18 +17,17 @@ namespace Military
             var groundDistance = UtilityClass.TryParseInt("Enter ground distance: ");
             var waterDistance = UtilityClass.TryParseInt("Now water distance: ");
             var numberOfSoldiers = UtilityClass.TryParseInt("Enter number of soldiers: ");
-            if (groundDistance + waterDistance < distanceForTheTank &&
-                groundDistance + waterDistance < distanceForTheWarship)
+            if (UtilityClass.CheckIfInputIsOk(groundDistance, waterDistance, distanceForTheTank, distanceForTheWarship) != true)
+            {
+                Console.WriteLine("Wrong input.");
+            }
+            else
             {
                 tank.NewTrip(numberOfSoldiers, distanceForTheTank);
                 warship.NewTrip(numberOfSoldiers, distanceForTheWarship);
                 amfibia.NewTrip(numberOfSoldiers, groundDistance, waterDistance);
             }
-            else
-            {
-                Console.WriteLine("Wrong input.");
-            }
-
+            
 
         }
     }

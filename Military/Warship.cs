@@ -4,7 +4,7 @@ namespace Military
 {
     public class Warship : Vehicle, ISwimmable
     {
-        private  double totalFuelConsumption { get; set; }
+        private  double TotalFuelConsumption { get; set; }
 
         public Warship(int id, double weight, double averageSpeed)
             : base(id, weight, averageSpeed, 70, 20)
@@ -12,38 +12,37 @@ namespace Military
 
         }
 
-        public override void Print()
+        protected override void Print()
         {
             base.Print();
-            Console.WriteLine($" | Total Fuel Consumption{totalFuelConsumption}");
+            Console.WriteLine($" | Total Fuel Consumption{TotalFuelConsumption}\n");
             
         }
         public override void NewTrip(int soldiers, int waterDistance)
         {
 
-            totalFuelConsumption = CalculateHowManyTrips(soldiers) * CalculateFuelForTheTrip(Swim(waterDistance));
+            TotalFuelConsumption = CalculateHowManyTrips(soldiers) * CalculateFuelForTheTrip(Swim(waterDistance));
             Print();
         }
 
         public int Swim(int distance)
         {
             var doubleDistance = (double)distance*2;
-            var distanceInTenMinutes = countDistance();   
-            
+            var distanceInTenMinutes = CountDistance();            
             var prolongationOfTheRoad = 0;
             do
             {                  
-                if (NecessaryMethods.ProbabilityOfFiftyPercent() == true)
+                if (CalculateProbability.ProbabilityOfFiftyPercent()) 
                 {                   
-                    prolongationOfTheRoad += 3; // add 3 more km to prolongationOfTheRoad
-                }
-                
+                    prolongationOfTheRoad += 3; // add 3 more km to prolongationOfTheRoad                
+                }               
                 doubleDistance -= distanceInTenMinutes; // take off distance that it makes in 10 minutes of distance we already calculated chance
             } while (doubleDistance > 0);
+            
             return distance*2 + prolongationOfTheRoad;
         }
 
-        public double countDistance()
+        private double CountDistance()
         {
             // distance in km = AverageSpeed km/h * 1/6 h(10 min) 
            
