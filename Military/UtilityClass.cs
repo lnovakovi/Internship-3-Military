@@ -35,6 +35,22 @@ namespace Military
             }
         }
 
-        
+        public static Vehicle CheckBestVehicle(Tank tank, Warship warship, Amfibia amfibia)
+        {
+            if (tank.FuelConsumption < warship.FuelConsumption &&
+                tank.TotalFuelConsumption < amfibia.TotalFuelConsumption)
+            {
+                return tank;
+            }
+            else if (warship.FuelConsumption < tank.FuelConsumption &&
+                     warship.FuelConsumption < amfibia.FuelConsumption)
+            {
+                return warship;
+            }
+            else
+            {
+                return amfibia;
+            }
+        }
     }
 }

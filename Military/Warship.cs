@@ -4,7 +4,7 @@ namespace Military
 {
     public class Warship : Vehicle, ISwimmable
     {
-        private  double TotalFuelConsumption { get; set; }
+        public  double TotalFuelConsumption { get; set; }
 
         public Warship(int id, double weight, double averageSpeed)
             : base(id, weight, averageSpeed, 70, 20)

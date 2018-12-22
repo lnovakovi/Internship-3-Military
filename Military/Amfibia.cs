@@ -7,7 +7,7 @@ namespace Military
 
        
 
-        private double TotalFuelConsumption { get; set; }
+        public double TotalFuelConsumption { get; set; }
         public Amfibia(int id, double weight, double averageSpeed)
             : base(id, weight, averageSpeed, 200, 50)
         {

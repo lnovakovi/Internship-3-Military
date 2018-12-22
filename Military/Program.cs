@@ -27,7 +27,8 @@ namespace Military
                 warship.NewTrip(numberOfSoldiers, distanceForTheWarship);
                 amfibia.NewTrip(numberOfSoldiers, groundDistance, waterDistance);
             }
-            
+
+            Console.WriteLine($"Your best choice is to use: {UtilityClass.CheckBestVehicle(tank,warship,amfibia).GetType().Name}");
 
         }
     }
